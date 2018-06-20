@@ -1,0 +1,40 @@
+<mvc:View controllerName="com.espedia.demo.EquipmentCalendar.controller.Calendar" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:unified="sap.ui.unified" xmlns:core="sap.ui.core">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<PlanningCalendar id="calendar" startDate="{path: '/startDate'}" rows="{path: '/equipments'}" appointmentsVisualization="Filled"
+						appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false">
+						<toolbarContent>
+							<Title text="Title" titleStyle="H4"/>
+							<Button text="DEBUGGER" press="pressDebug"/>
+							<ToolbarSpacer/>
+							<Label text="Start Date:"></Label>
+							<Label text="" id="startDate"></Label>
+							<Label text="-----"></Label>
+							<Label text="End Date:"></Label>
+							<Label text="" id="endDate"></Label>
+						</toolbarContent>
+						<rows>
+							<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'name'}" text="{id}"
+								appointments="{path : 'appointments', templateShareable: 'true'}" intervalHeaders="{path: 'headers', templateShareable: 'true'}">
+								<customData>
+									<core:CustomData key="emp-name" value="{name}" writeToDom="true"/>
+									<core:CustomData key="visible" value="{visible}" writeToDom="true"/>
+								</customData>
+								<appointments>
+									<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+										tentative="{tentative}"></unified:CalendarAppointment>
+								</appointments>
+								<intervalHeaders>
+									<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
+								</intervalHeaders>
+							</PlanningCalendarRow>
+						</rows>
+					</PlanningCalendar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

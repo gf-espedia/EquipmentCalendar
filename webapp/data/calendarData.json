@@ -1,0 +1,54 @@
+{
+    "startDate": "2017-01-01T07:00:00.000Z",
+    "equipments": [
+        {
+            "pic": "data/images/9767676.jpg",
+            "name": "Mechanical Arm Model 192.3A",
+            "appointments": [
+                {
+                    "start": "2017-01-08T07:30:00.000Z",
+                    "end": "2017-01-08T08:30:00.000Z",
+                    "title": "Meet Max Mustermann",
+                    "type": "Type02",
+                    "tentative": false
+                }
+            ]
+        },
+        {
+            "pic": "data/images/9878787.jpg",
+            "name": "Industrial Packer 78",
+            "appointments": [
+                {
+                    "start": "2017-01-10T17:00:00.000Z",
+                    "end": "2017-01-10T18:10:00.000Z",
+                    "title": "Discussion of the plan",
+                    "info": "Online meeting",
+                    "type": "Type04",
+                    "tentative": false
+                },
+                {
+                    "start": "2017-01-15T07:00:00.000Z",
+                    "end": "2017-01-15T08:30:00.000Z",
+                    "title": "Discussion of the plan",
+                    "info": "Online meeting",
+                    "type": "Type04",
+                    "tentative": false
+                }
+            ],
+            "headers": [
+                {
+                    "start": "2017-01-15T08:00:00.000Z",
+                    "end": "2017-01-15T09:00:00.000Z",
+                    "title": "Payment reminder",
+                    "type": "Type06"
+                },
+                {
+                    "start": "2017-01-15T15:30:00.000Z",
+                    "end": "2017-01-15T17:00:00.000Z",
+                    "title": "Private appointment",
+                    "type": "Type06"
+                }
+            ]
+        }
+    ]
+}
