@@ -18,6 +18,15 @@
         "entryPath": "/test-resources"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "S4_HANA_SD4",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "S4 Hana Ethica"
     }
   ],
   "sendWelcomeFileRedirect": true

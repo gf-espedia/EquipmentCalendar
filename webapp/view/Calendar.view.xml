@@ -8,8 +8,9 @@
 					<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"
 						sideContentFallDown="BelowM" breakpointChanged="handleBreakpointChangeEvent">
 						<l:mainContent>
-							<PlanningCalendar id="calendar" startDate="{path: '/startDate'}" rows="{path: '/equipments'}" appointmentsVisualization="Filled"
-								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false">
+							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled"
+								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" startDateChange="onDateChange"
+								viewChange="onViewKeyChange" >
 								<toolbarContent>
 									<Title text="Title" titleStyle="H4"/>
 									<Button text="DEBUGGER" press="pressDebug"/>
@@ -21,19 +22,18 @@
 									<Label text="" id="endDate"></Label>
 								</toolbarContent>
 								<rows>
-									<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'name'}" text="{id}"
-										appointments="{path : 'appointments', templateShareable: 'true'}" intervalHeaders="{path: 'headers', templateShareable: 'true'}">
+									<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'Equipment'}" text="Descrizione Equipment"
+										appointments="{path : 'Appointments', templateShareable: 'true'}">
 										<customData>
-											<core:CustomData key="emp-name" value="{name}" writeToDom="true"/>
+											<core:CustomData key="emp-name" value="{MaintItemDescruption}" writeToDom="true"/>
 											<core:CustomData key="visible" value="{visible}" writeToDom="true"/>
 										</customData>
 										<appointments>
-											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" text="{info}" type="{type}"
+											<unified:CalendarAppointment startDate="{ScheduledStartDate}" endDate="{DummyEndDate}" icon="sap-icon://machine"
+											title="Plan: {MaintenancePlan} - Call: {MaintPlanCall}" text="{MaintItemDescruption}" type="{type}"
 												tentative="{tentative}"></unified:CalendarAppointment>
 										</appointments>
-										<intervalHeaders>
-											<unified:CalendarAppointment startDate="{start}" endDate="{end}" icon="{pic}" title="{title}" type="{type}"></unified:CalendarAppointment>
-										</intervalHeaders>
+								
 									</PlanningCalendarRow>
 								</rows>
 							</PlanningCalendar>
