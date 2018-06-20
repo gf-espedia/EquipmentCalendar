@@ -40,7 +40,7 @@
 						</l:mainContent>
 						<l:sideContent>
 							<Toolbar>
-								<Title text="Comments"/>
+								<Title text="Plan 1"/>
 							</Toolbar>
 							<l:VerticalLayout width="100%">
 								<f:Form id="maintPlanForm" editable="true">

@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "com.espedia.demo.EquipmentCalendar.EquipmentCalendar",
+        "description": "EquipmentCalendar",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#EquipmentCalendar-Display",
+        "navigationComponentName": "com.espedia.demo.EquipmentCalendar",
+        "intentSemanticObject": "EquipmentCalendar",
+        "intentAction": "Display",
+        "html5ApplicationName": "equipmentcalendar",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "5df8b5ce-4525-4e86-9e7c-c8c4df2f37dd"
+        ],
+        "contentPackages": [
+            "9cec20bf-7531-4109-b548-f07420dae5c2"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "EquipmentCalendar",
+        "subtitle": "",
+        "searchKeywords": "EquipmentCalendar,",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}
