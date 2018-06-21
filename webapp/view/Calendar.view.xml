@@ -6,7 +6,7 @@
 			<Page title="{i18n>title}">
 				<content>
 					<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"
-						sideContentFallDown="BelowM" breakpointChanged="handleBreakpointChangeEvent">
+						sideContentFallDown="BelowM" showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
 						<l:mainContent>
 							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled"
 								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" startDateChange="onDateChange"
@@ -55,17 +55,17 @@
 											<f:formElements>
 												<f:FormElement label="Cycle">
 													<f:fields>
-														<Label text="Cycle data"/>
+														<Label text="{TaskListType} / {TaskListGroup} / {GroupCounter} - {TaskListDescription}"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Call Horizon">
 													<f:fields>
-														<Label text="Call Horizon data"/>
+														<Label text="{CallHorizon}"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Scheduling Period">
 													<f:fields>
-														<Label text="Scheduling Period data"/>
+														<Label text="{SchedulingPeriod} {SchedulingPeriodUnit}"/>
 													</f:fields>
 												</f:FormElement>
 											</f:formElements>
@@ -85,27 +85,27 @@
 											<f:formElements>
 												<f:FormElement label="Status">
 													<f:fields>
-														<Label text="Status data"/>
+														<Label text="{SstatusDescr}"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Work Center">
 													<f:fields>
-														<Label text="Work Center data"/>
+														<Label text="{MnWkCtr} - {MainWorkcenterDescr}"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Work Order">
 													<f:fields>
-														<Label text="Work Order data"/>
+														<Label text="{Orderid} - {ShortText}"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Call Date">
 													<f:fields>
-														<Label text="Call Date data"/>
+														<Label text="?"/>
 													</f:fields>
 												</f:FormElement>
 												<f:FormElement label="Completion Date">
 													<f:fields>
-														<Label text="Completion Date data"/>
+														<Label text="?"/>
 													</f:fields>
 												</f:FormElement>
 											</f:formElements>
