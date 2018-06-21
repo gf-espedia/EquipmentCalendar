@@ -26,7 +26,6 @@
 										appointments="{path : 'Appointments', templateShareable: 'true'}">
 										<customData>
 											<core:CustomData key="emp-name" value="{MaintItemDescruption}" writeToDom="true"/>
-											<core:CustomData key="visible" value="{visible}" writeToDom="true"/>
 										</customData>
 										<appointments>
 											<unified:CalendarAppointment startDate="{ScheduledStartDate}" endDate="{DummyEndDate}" icon="sap-icon://machine"

@@ -7,73 +7,21 @@ sap.ui.define([
 	return Controller.extend("com.espedia.demo.EquipmentCalendar.controller.Calendar", {
 		_dateFilter: null,
 		onInit: function() {
-			//this.getView().byId("calendar").setViewKey("Week");
 			this._cModel = new sap.ui.model.json.JSONModel({
 				"Data": []
 			});
 			this.getDatesShown();
-			debugger;
-			/*this.getOwnerComponent().getModel().read("/EquipmentCalendarSet", {
-				"filters": [this._dateFilter],
-				"success": function(oData) {
-					debugger;
-				}.bind(this),
-				"error": function(err) {
-					MessageBox.error(err.message);
-					debugger;
-				}
-			});*/
+			
 			this.getOwnerComponent().getModel().attachMetadataLoaded(null, this.updateCalendar, this);
+			this.getOwnerComponent().getModel().attachMetadataLoaded(null, this.setDefaultFirstView, this);
 			this.getView().byId("calendar").setModel(this._cModel);
-			/*	this._cModel.setData({
-					startDate: new Date("2017", "0", "15", "8", "0"),
-					equipments: [{
-						pic: "data/images/9767676.jpg",
-						name: "Mechanical Arm Model 192.3A",
-						"id": "9767676",
-						visible: false,
-						appointments: [{
-							start: new Date("2017", "0", "8", "08", "30"),
-							end: new Date("2017", "0", "8", "09", "30"),
-							title: "Meet Max Mustermann",
-							type: "Type02",
-							tentative: false
-						}]
-					}, {
-						pic: "data/images/9878787.jpg",
-						name: "Industrial Packer 78",
-						"id": "9878787",
-						visible: true,
-						appointments: [{
-							start: new Date("2017", "0", "10", "18", "00"),
-							end: new Date("2017", "0", "10", "19", "10"),
-							title: "Discussion of the plan",
-							info: "Online meeting",
-							type: "Type04",
-							tentative: false
-						}, {
-							start: new Date("2017", "0", "15", "08", "00"),
-							end: new Date("2017", "0", "15", "09", "30"),
-							title: "Discussion of the plan",
-							info: "Online meeting",
-							type: "Type04",
-							tentative: false
-						}],
-						headers: [{
-							start: new Date("2017", "0", "15", "9", "0"),
-							end: new Date("2017", "0", "15", "10", "0"),
-							title: "Payment reminder",
-							type: "Type06"
-						}, {
-							start: new Date("2017", "0", "15", "16", "30"),
-							end: new Date("2017", "0", "15", "18", "00"),
-							title: "Private appointment",
-							type: "Type06"
-						}]
-					}]
-				});
-				this.getView().byId("calendar").setModel(this._cModel);*/
 		},
+		
+		setDefaultFirstView: function() {
+			this.getView().byId("calendar").setViewKey("Week");
+			this.getView().getModel().detachMetadataLoaded(this.setDefaultFirstView);
+		},
+		
 
 		updateCalendar: function() {
 			this.getDatesShown();
@@ -81,21 +29,16 @@ sap.ui.define([
 		},
 
 		pressDebug: function() {
-			debugger;
 			var c = this.getView().byId("calendar");
 			this.getDatesShown();
 		},
 
 		onDateChange: function() {
-			/*var date = this.getView().byId("calendar").getStartDate().toDateString();
-			sap.m.MessageToast.show(date);*/
 			this.updateCalendar();
-			//this.readCalendarData();
 		},
 
 		onViewKeyChange: function(oEvent) {
 			this.updateCalendar();
-			//this.readCalendarData();
 		},
 
 		getDatesShown: function() {
@@ -124,6 +67,8 @@ sap.ui.define([
 			this._dateFilter = new sap.ui.model.Filter("ScheduledStartDate", sap.ui.model.FilterOperator.BT, startDate, endDate);
 			this.getView().byId("startDate").setText(startDate.toDateString());
 			this.getView().byId("endDate").setText(endDate.toDateString());
+			this._startDate = new Date(startDate.valueOf());
+			this._endDate = new Date(endDate.valueOf());
 			startDate = null;
 			endDate = null;
 
@@ -135,9 +80,11 @@ sap.ui.define([
 				"success": function(oData) {
 					var data = [];
 					var entity = {};
-					var index;
-					for (var entry of oData.results) {
-						if (entry.Equipment.length < 1) {
+					var index, entry;
+					for (var i in oData.results) {
+						entry = oData.results[i];
+						if (entry.Equipment.length < 1
+						|| (entry.ScheduledStartDate < this._startDate || entry.ScheduledStartDate > this._endDate)) {
 							continue;
 						}
 						entity = {};
@@ -146,7 +93,9 @@ sap.ui.define([
 						});
 						if (index > -1) {
 							entity.ScheduledStartDate = entry.ScheduledStartDate;
-							entity.DummyEndDate = new Date(entry.ScheduledStartDate.valueOf() + 3600 * 1000 * 10);
+							entity.DummyEndDate = new Date(entry.ScheduledStartDate.valueOf());
+							entity.ScheduledStartDate.setHours(0);
+							entity.DummyEndDate.setHours(23,59);
 							entity.MaintPlanCall = entry.MaintPlanCall;
 							entity.MaintenancePlan = entry.MaintenancePlan;
 							entity.MaintItemDescruption = entry.MaintItemDescruption;
@@ -160,7 +109,11 @@ sap.ui.define([
 
 							var appointment = {};
 							appointment.ScheduledStartDate = entry.ScheduledStartDate;
-							appointment.DummyEndDate = new Date(entry.ScheduledStartDate.valueOf() + 3600 * 1000 * 10);
+							//appointment.DummyEndDate = new Date(entry.ScheduledStartDate.valueOf() + 3600 * 1000 * 10);
+							appointment.DummyEndDate = new Date(entry.ScheduledStartDate.valueOf());
+							appointment.ScheduledStartDate.setHours(0);
+							appointment.DummyEndDate.setHours(23,59);
+							
 							appointment.MaintPlanCall = entry.MaintPlanCall;
 							appointment.MaintenancePlan = entry.MaintenancePlan;
 							appointment.MaintItemDescruption = entry.MaintItemDescruption;
@@ -175,7 +128,6 @@ sap.ui.define([
 					this._cModel.setData({
 						"Data": data
 					});
-					debugger;
 				}.bind(this),
 				"error": function(err) {
 					MessageBox.error(err.message);
