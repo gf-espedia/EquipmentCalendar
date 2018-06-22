@@ -10,7 +10,8 @@ sap.ui.define([
 			this._cModel = new sap.ui.model.json.JSONModel({
 				"Data": []
 			});
-			this.getDatesShown();
+			
+			this.getView().byId("calendar").setBuiltInViews(["Day", "Week", "Month", "One Month"]);
 
 			this.getOwnerComponent().getModel().attachMetadataLoaded(null, this.updateCalendar, this);
 			this.getOwnerComponent().getModel().attachMetadataLoaded(null, this.setDefaultFirstView, this);
@@ -160,7 +161,6 @@ sap.ui.define([
 			} else {
 				this.getView().byId("maintOrderForm").setVisible(false);
 			}
-			debugger;
 			if (oAppointment) {
 				this.getView().byId("DynamicSideContent").setShowSideContent(true);
 				sap.m.MessageToast.show("Appointment selected: " + oAppointment.getTitle() + "\n" + oAppointment.getText());
@@ -170,6 +170,10 @@ sap.ui.define([
 				var sValue = aAppointments.length + " Appointments selected";
 				sap.m.MessageBox.show(sValue);
 			}
+		},
+		
+		hideSideContent: function() {
+			this.getView().byId("DynamicSideContent").setShowSideContent(false);
 		}
 	});
 });

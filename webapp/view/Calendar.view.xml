@@ -10,7 +10,7 @@
 						<l:mainContent>
 							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled"
 								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" startDateChange="onDateChange"
-								viewChange="onViewKeyChange" >
+								viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
 								<toolbarContent>
 									<Title text="Title" titleStyle="H4"/>
 									<Button text="DEBUGGER" press="pressDebug"/>
@@ -39,6 +39,8 @@
 						</l:mainContent>
 						<l:sideContent>
 							<Toolbar>
+								<Button icon="sap-icon://minimize" type="Transparent" press="hideSideContent" />
+								<ToolbarSpacer />
 								<Title text="Plan 1"/>
 							</Toolbar>
 							<l:VerticalLayout width="100%">
