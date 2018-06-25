@@ -8,9 +8,8 @@
 					<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"
 						sideContentFallDown="BelowM" showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
 						<l:mainContent>
-							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled"
-								appointmentSelect="handleAppointmentSelect" showEmptyIntervalHeaders="false" startDateChange="onDateChange"
-								viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
+							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect"
+								showEmptyIntervalHeaders="false" startDateChange="onDateChange" viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
 								<toolbarContent>
 									<Title text="Title" titleStyle="H4"/>
 									<Button text="DEBUGGER" press="pressDebug"/>
@@ -24,23 +23,21 @@
 								<rows>
 									<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'Equipment'}" text="Descrizione Equipment"
 										appointments="{path : 'Appointments', templateShareable: 'true'}">
-										<customData>
-											<core:CustomData key="emp-name" value="{MaintItemDescruption}" writeToDom="true"/>
-										</customData>
+										<!--<customData>
+											<core:CustomData key="emp-name" value="{MaintItemDescription}" writeToDom="true"/>
+										</customData>-->
 										<appointments>
 											<unified:CalendarAppointment startDate="{ScheduledStartDate}" endDate="{DummyEndDate}" icon="sap-icon://machine"
-											title="Plan: {MaintenancePlan} - Call: {MaintPlanCall}" text="{MaintItemDescruption}" type="{type}"
-												tentative="{tentative}"></unified:CalendarAppointment>
+												title="Plan: {MaintenancePlan} - Call: {MaintPlanCall}" text="{MaintItemDescruption}" type="{type}" tentative="{tentative}"></unified:CalendarAppointment>
 										</appointments>
-								
 									</PlanningCalendarRow>
 								</rows>
 							</PlanningCalendar>
 						</l:mainContent>
 						<l:sideContent>
 							<Toolbar>
-								<Button icon="sap-icon://minimize" type="Transparent" press="hideSideContent" />
-								<ToolbarSpacer />
+								<Button icon="sap-icon://minimize" type="Transparent" press="hideSideContent"/>
+								<ToolbarSpacer/>
 								<Title text="Plan 1"/>
 							</Toolbar>
 							<l:VerticalLayout width="100%">
@@ -55,7 +52,7 @@
 									<f:formContainers>
 										<f:FormContainer>
 											<f:formElements>
-												<f:FormElement label="Cycle">
+												<f:FormElement label="Cycle" id="cycleFormEntry">
 													<f:fields>
 														<Label text="{TaskListType} / {TaskListGroup} / {GroupCounter} - {TaskListDescription}"/>
 													</f:fields>
@@ -114,6 +111,18 @@
 										</f:FormContainer>
 									</f:formContainers>
 								</f:Form>
+								<List id="operationsList" enableBusyIndicator="true">
+									<headerToolbar>
+										<Toolbar>
+											<content>
+												<Title text="Maintenance Cycle Operations" level="H2"/>
+												<!--	<ToolbarSpacer/>
+												<Label text="Task List Group: _ / Task List Type: _ / Group Counter: _ "/>-->
+											</content>
+										</Toolbar>
+									</headerToolbar>
+									
+								</List>
 							</l:VerticalLayout>
 						</l:sideContent>
 					</l:DynamicSideContent>
