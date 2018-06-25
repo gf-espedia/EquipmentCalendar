@@ -9,10 +9,9 @@
 						sideContentFallDown="BelowM" showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
 						<l:mainContent>
 							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect"
-								showEmptyIntervalHeaders="false" startDateChange="onDateChange" viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
+								showEmptyIntervalHeaders="false" stickyHeader="true" startDateChange="onDateChange" viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
 								<toolbarContent>
 									<Title text="Title" titleStyle="H4"/>
-									<Button text="DEBUGGER" press="pressDebug"/>
 									<ToolbarSpacer/>
 									<Label text="Start Date:"></Label>
 									<Label text="" id="startDate"></Label>
@@ -38,7 +37,7 @@
 							<Toolbar>
 								<Button icon="sap-icon://minimize" type="Transparent" press="hideSideContent"/>
 								<ToolbarSpacer/>
-								<Title text="Plan 1"/>
+								<Title id="sideTitle" text="Plan 1"/>
 							</Toolbar>
 							<l:VerticalLayout width="100%">
 								<f:Form id="maintPlanForm" editable="true">
@@ -52,6 +51,16 @@
 									<f:formContainers>
 										<f:FormContainer>
 											<f:formElements>
+												<f:FormElement label="Maintenance Plan">
+													<f:fields>
+														<Label text="{MaintenancePlan}"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Maintenance Plan Call">
+													<f:fields>
+														<Label text="{MaintPlanCall}"/>
+													</f:fields>
+												</f:FormElement>
 												<f:FormElement label="Cycle" id="cycleFormEntry">
 													<f:fields>
 														<Label text="{TaskListType} / {TaskListGroup} / {GroupCounter} - {TaskListDescription}"/>
@@ -97,7 +106,7 @@
 														<Label text="{Orderid} - {ShortText}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Call Date">
+											<!--	<f:FormElement label="Call Date">
 													<f:fields>
 														<Label text="?"/>
 													</f:fields>
@@ -106,7 +115,7 @@
 													<f:fields>
 														<Label text="?"/>
 													</f:fields>
-												</f:FormElement>
+												</f:FormElement>-->
 											</f:formElements>
 										</f:FormContainer>
 									</f:formContainers>

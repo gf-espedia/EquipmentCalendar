@@ -30,11 +30,6 @@ sap.ui.define([
 			this.readCalendarData();
 		},
 
-		pressDebug: function() {
-			var c = this.getView().byId("calendar");
-			this.getDatesShown();
-		},
-
 		onDateChange: function() {
 			this.updateCalendar();
 		},
@@ -163,6 +158,10 @@ sap.ui.define([
 				//var selectedRow = oEvent.getParameter("appointment").getParent().getBindingContext().getPath();
 				this.getView().byId("maintPlanForm").bindElement(sPath);
 				var appointmentData = this._cModel.getProperty(sPath);
+				
+				//MaintItemDescruption
+				this.getView().byId("sideTitle").setText(appointmentData.MaintItemDescruption);
+				
 				// Manage work orders data
 				if (appointmentData.WorkOrder && appointmentData.WorkOrder.length > 0) {
 					this.getView().byId("maintOrderForm").setVisible(true);
