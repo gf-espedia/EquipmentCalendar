@@ -25,6 +25,7 @@ sap.ui.define([
 		},
 
 		updateCalendar: function() {
+			this.setShowSideContent(false);
 			this.getDatesShown();
 			this.readCalendarData();
 		},
@@ -187,7 +188,7 @@ sap.ui.define([
 				} else {
 					this.getView().byId("operationsList").setVisible(false);
 					this.getView().byId("cycleFormEntry").setVisible(false);
-					
+
 				}
 			} else {
 				this.setShowSideContent(false); //getView().byId("DynamicSideContent").setShowSideContent(false);
