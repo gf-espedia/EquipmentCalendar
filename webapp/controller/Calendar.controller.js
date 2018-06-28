@@ -62,8 +62,8 @@ sap.ui.define([
 					break;
 			};
 			this._dateFilter = new sap.ui.model.Filter("ScheduledStartDate", sap.ui.model.FilterOperator.BT, startDate, endDate);
-			this.getView().byId("startDate").setText(startDate.toDateString());
-			this.getView().byId("endDate").setText(endDate.toDateString());
+			//	this.getView().byId("startDate").setText(startDate.toDateString());
+			//	this.getView().byId("endDate").setText(endDate.toDateString());
 			this._startDate = new Date(startDate.valueOf());
 			this._endDate = new Date(endDate.valueOf());
 			startDate = null;
@@ -109,6 +109,7 @@ sap.ui.define([
 							data[index]["Appointments"].push(entity);
 						} else {
 							entity.Equipment = entry.Equipment;
+							entity.Equidescr = entry.Equidescr;
 
 							var appointment = {};
 							appointment.ScheduledStartDate = entry.ScheduledStartDate;
@@ -158,10 +159,10 @@ sap.ui.define([
 				//var selectedRow = oEvent.getParameter("appointment").getParent().getBindingContext().getPath();
 				this.getView().byId("maintPlanForm").bindElement(sPath);
 				var appointmentData = this._cModel.getProperty(sPath);
-				
+
 				//MaintItemDescruption
 				this.getView().byId("sideTitle").setText(appointmentData.MaintItemDescruption);
-				
+
 				// Manage work orders data
 				if (appointmentData.WorkOrder && appointmentData.WorkOrder.length > 0) {
 					this.getView().byId("maintOrderForm").setVisible(true);

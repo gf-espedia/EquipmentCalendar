@@ -11,16 +11,12 @@
 							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect"
 								showEmptyIntervalHeaders="false" stickyHeader="true" startDateChange="onDateChange" viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
 								<toolbarContent>
-									<Title text="Title" titleStyle="H4"/>
+									<Title text="Planned Equipment Maintenance" titleStyle="H4"/>
 									<ToolbarSpacer/>
-									<Label text="Start Date:"></Label>
-									<Label text="" id="startDate"></Label>
-									<Label text="-----"></Label>
-									<Label text="End Date:"></Label>
-									<Label text="" id="endDate"></Label>
+									<Label text=" "></Label>
 								</toolbarContent>
 								<rows>
-									<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'Equipment'}" text="Descrizione Equipment"
+									<PlanningCalendarRow icon="sap-icon://machine" title="{path: 'Equipment'}" text="{path: 'Equidescr'}"
 										appointments="{path : 'Appointments', templateShareable: 'true'}">
 										<!--<customData>
 											<core:CustomData key="emp-name" value="{MaintItemDescription}" writeToDom="true"/>
@@ -35,7 +31,7 @@
 						</l:mainContent>
 						<l:sideContent>
 							<Toolbar>
-								<Button icon="sap-icon://minimize" type="Transparent" press="hideSideContent"/>
+								<Button icon="sap-icon://decline" type="Transparent" press="hideSideContent"/>
 								<ToolbarSpacer/>
 								<Title id="sideTitle" text="Plan 1"/>
 							</Toolbar>

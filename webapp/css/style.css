@@ -1,1 +1,6 @@
 /* Enter your custom styles here */
+
+
+.sapUiDSC.sapUiContentPadding>aside {
+ 	    border-left: 2px solid #bbb!important;
+ }
