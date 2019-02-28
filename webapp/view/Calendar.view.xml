@@ -11,7 +11,7 @@
 							<PlanningCalendar id="calendar" rows="{path: '/Data'}" appointmentsVisualization="Filled" appointmentSelect="handleAppointmentSelect"
 								showEmptyIntervalHeaders="false" stickyHeader="true" startDateChange="onDateChange" viewChange="onViewKeyChange" rowSelectionChange="hideSideContent">
 								<toolbarContent>
-									<Title text="Planned Equipment Maintenance" titleStyle="H4"/>
+									<Title text="{i18n>title1}" titleStyle="H4"/>
 									<ToolbarSpacer/>
 									<Label text=" "></Label>
 								</toolbarContent>
@@ -33,12 +33,12 @@
 							<Toolbar>
 								<Button icon="sap-icon://decline" type="Transparent" press="hideSideContent"/>
 								<ToolbarSpacer/>
-								<Title id="sideTitle" text="Plan 1"/>
+								<Title id="sideTitle" text="{i18n>Plan1}"/>
 							</Toolbar>
 							<l:VerticalLayout width="100%">
 								<f:Form id="maintPlanForm" editable="true">
 									<f:title>
-										<core:Title text="Maintenance Plan"/>
+										<core:Title text="{i18n>MaintenancePlan}"/>
 									</f:title>
 									<f:layout>
 										<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1"
@@ -47,27 +47,27 @@
 									<f:formContainers>
 										<f:FormContainer>
 											<f:formElements>
-												<f:FormElement label="Maintenance Plan">
+												<f:FormElement label="{i18n>MaintenancePlan}">
 													<f:fields>
 														<Label text="{MaintenancePlan}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Maintenance Plan Call">
+												<f:FormElement label="{i18n>MaintenanceCall}">
 													<f:fields>
 														<Label text="{MaintPlanCall}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Cycle" id="cycleFormEntry">
+												<f:FormElement label="{i18n>Cycle}" id="cycleFormEntry">
 													<f:fields>
 														<Label text="{TaskListType} / {TaskListGroup} / {GroupCounter} - {TaskListDescription}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Call Horizon">
+												<f:FormElement label="{i18n>CallHorizon}">
 													<f:fields>
 														<Label text="{CallHorizon}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Scheduling Period">
+												<f:FormElement label="{i18n>SchedulingPeriod}">
 													<f:fields>
 														<Label text="{SchedulingPeriod} {SchedulingPeriodUnit}"/>
 													</f:fields>
@@ -78,7 +78,7 @@
 								</f:Form>
 								<f:Form id="maintOrderForm" editable="true">
 									<f:title>
-										<core:Title text="Maintenance Order"/>
+										<core:Title text="{i18n>MaintenanceOrder}"/>
 									</f:title>
 									<f:layout>
 										<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="1"
@@ -87,17 +87,17 @@
 									<f:formContainers>
 										<f:FormContainer>
 											<f:formElements>
-												<f:FormElement label="Status">
+												<f:FormElement label="{i18n>Status}">
 													<f:fields>
 														<Label text="{SstatusDescr}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Work Center">
+												<f:FormElement label="{i18n>WorkCenter}">
 													<f:fields>
 														<Label text="{MnWkCtr} - {MainWorkcenterDescr}"/>
 													</f:fields>
 												</f:FormElement>
-												<f:FormElement label="Work Order">
+												<f:FormElement label="{i18n>WorkOrder}">
 													<f:fields>
 														<Label text="{Orderid} - {ShortText}"/>
 													</f:fields>
@@ -120,7 +120,7 @@
 									<headerToolbar>
 										<Toolbar>
 											<content>
-												<Title text="Maintenance Cycle Operations" level="H2"/>
+												<Title text="{i18n>MaintenanceCycle}" level="H2"/>
 												<!--	<ToolbarSpacer/>
 												<Label text="Task List Group: _ / Task List Type: _ / Group Counter: _ "/>-->
 											</content>

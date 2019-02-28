@@ -140,7 +140,7 @@ sap.ui.define([
 					});
 				}.bind(this),
 				"error": function(err) {
-					MessageBox.error(err.message);
+					MessageBox.error(this.getView().getModel("i18n").getResourceBundle().getText("errMessage"));
 				}
 			});
 		},
